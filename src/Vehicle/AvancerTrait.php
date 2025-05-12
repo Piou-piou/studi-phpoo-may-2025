@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Vehicle;
 trait AvancerTrait
 {
     public function avancer(int $nombreCase = 5)

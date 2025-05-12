@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Person;
+
+use App\Person\Interface\PersonneInterface;
+
 class Homme implements PersonneInterface
 {
 

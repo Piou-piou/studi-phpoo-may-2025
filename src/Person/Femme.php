@@ -1,11 +1,15 @@
 <?php
 
+namespace App\Person;
+
+use App\Person\Interface\PersonneInterface;
+
 class Femme implements PersonneInterface
 {
 
     public function definirNom(string $nom): string
     {
-        return 'Mme '. $nom;
+        return 'Mme ' . $nom;
     }
 
     public function definirPrenom(string $prenom): string
