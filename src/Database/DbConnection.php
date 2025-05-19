@@ -12,7 +12,7 @@ class DbConnection
 
     public function __construct()
     {
-        $this->pdo = new \PDO('mysql:host=mysql;dbname=php_object;port=3306', 'root', '');
+        $this->pdo = new \PDO($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     }
 
     public static function getInstance(): DbConnection
