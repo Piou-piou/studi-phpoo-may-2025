@@ -21,6 +21,9 @@ $router = new Router($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
 $router->register('GET', '/user/list', UserController::class, 'list');
 $router->register('GET', '/article/list', ArticleController::class, 'listArticle');
 
+// exemple d'une route pour créer un user
+//$router->register(['GET', 'POST'], '/user/create', UserController::class, 'create');
+
 /*echo '<pre>';
 print_r($router->getRoutes());
 echo '</pre>';*/
@@ -36,4 +39,6 @@ print_r($data);
 echo '</pre>';*/
 
 // afficher le template que l'on récupère des data
-echo $data['template'];
+//echo $data['template'];
+
+require_once '../templates/main.php';

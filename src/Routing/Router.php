@@ -5,11 +5,16 @@ namespace App\Routing;
 class Router
 {
     private array $routes = [];
+    private ?string $template = null;
 
     public function __construct(private string $method, private string $uri) {}
 
-    public function register(string $method, string $uri, string $controller, string $action)
+    public function register(string|array $method, string $uri, string $controller, string $action)
     {
+        if (!is_array($method)) {
+            $method = [$method];
+        }
+
         $this->routes[$uri] = [
             'method' => $method,
             'uri' => $uri,
@@ -39,15 +44,29 @@ class Router
             throw new \LogicException('La méthode '.$action.' n\'existe pas dans le controller '.$controller::class);
         }
 
-        // @TODO ajouter vérification de la méthode si OK par rapport à $this->>method
+        if (!in_array($this->method, $routeInfo['method'])) {
+            throw new \Exception($this->method.' n\'est pas autorisée pour cette URL');
+        }
 
         $data = $controller->$action();
+        $this->template = $data['template'];
+        unset($data['template']);
+
+        /** @TODO */
+        // par la suite avoir un truc du genre
+        //$data = $controller->getData();
+        //$this->template = $controller->getTemplate();
 
         /*echo '<pre>';
-        print_r($controller);
+        print_r($data);
         echo '</pre>';*/
 
         return $data;
+    }
+
+    public function getTemplate(): string
+    {
+        return $this->template;
     }
 
     public function getRoutes(): array
