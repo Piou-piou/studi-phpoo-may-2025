@@ -2,17 +2,13 @@
 
 namespace App\User\Controller;
 
-class UserController
+use App\Controller\BaseController;
+
+class UserController extends BaseController
 {
     public function list()
     {
         // a la place de return un array appeler une méthode
-        /*return $this->render('pages/users/list.php', [
-            'users' => $users,
-        ]);*/
-
-         return [
-            'template' => 'pages/users/list.php',
-        ];
+        return $this->render('pages/users/list.php');
     }
 }

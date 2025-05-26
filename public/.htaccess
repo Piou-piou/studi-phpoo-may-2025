@@ -1,2 +1,7 @@
 RewriteEngine On
+# Exclure les fichiers .css et .js si jamais ca plante et que *.css passe par index.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrire toutes les autres requêtes vers index.php
 RewriteRule .* index.php

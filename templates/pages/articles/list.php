@@ -5,7 +5,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($data['articles'] as $article): ?>
+        <?php foreach ($articles as $article): ?>
             <tr>
                 <td><?php echo $article->title ?></td>
             </tr>

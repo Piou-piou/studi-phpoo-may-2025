@@ -26,11 +26,6 @@ class Router
     public function run()
     {
         $routeInfo = $this->routes[$this->uri];
-
-        /*echo '<pre>';
-        print_r($routeInfo);
-        echo '</pre>';*/
-
         $controller = $routeInfo['controller'];
         $action = $routeInfo['action'];
 
@@ -48,20 +43,7 @@ class Router
             throw new \Exception($this->method.' n\'est pas autorisée pour cette URL');
         }
 
-        $data = $controller->$action();
-        $this->template = $data['template'];
-        unset($data['template']);
-
-        /** @TODO */
-        // par la suite avoir un truc du genre
-        //$data = $controller->getData();
-        //$this->template = $controller->getTemplate();
-
-        /*echo '<pre>';
-        print_r($data);
-        echo '</pre>';*/
-
-        return $data;
+        return $controller->$action();
     }
 
     public function getTemplate(): string

@@ -6,6 +6,8 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Mon</title>
+
+        <link rel="stylesheet" href="<?php echo ASSETS_PATH ?>css/style.css">
     </head>
     <body>
         <header>
@@ -21,7 +23,7 @@
         </header>
 
         <main>
-            <?php require_once $router->getTemplate() ?>
+            <?php require_once $template ?>
         </main>
 
         <footer>
